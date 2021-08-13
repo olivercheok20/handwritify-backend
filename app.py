@@ -7,6 +7,8 @@ from demo import Hand
 
 app = Flask(__name__)
 
+hand = Hand()
+
 
 @app.route("/", methods=['POST'])
 @cross_origin(allow_headers=['Content-Type'])
@@ -53,7 +55,6 @@ def hello_world():
 
     # return open(filename).read()
 
-    hand = Hand()
 
     return hand.write(
         filename=filename,
