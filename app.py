@@ -36,7 +36,7 @@ def hello_world():
     lines = processed_lines
     # print(all_chars)
 
-    lines = lines[:1]
+    lines = lines[:2]
 
     for line in lines:
         for char in line:
