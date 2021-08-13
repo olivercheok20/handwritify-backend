@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from flask_cors import cross_origin
 import unidecode
 import json
@@ -6,10 +6,9 @@ import json
 from demo import Hand
 
 app = Flask(__name__)
-CORS(app, resources=r"/*", headers='Content-Type')
-
 
 @app.route("/", methods=['POST', 'OPTIONS'])
+@cross_origin()
 def hello_world():
     jsonResponse = json.loads(request.data.decode('utf-8'))
 
