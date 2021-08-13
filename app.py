@@ -7,8 +7,9 @@ from demo import Hand
 
 app = Flask(__name__)
 
-@app.route("/", methods=['POST', 'OPTIONS'])
-@cross_origin()
+
+@app.route("/", methods=['POST'])
+@cross_origin(allow_headers=['Content-Type'])
 def hello_world():
     jsonResponse = json.loads(request.data.decode('utf-8'))
 
