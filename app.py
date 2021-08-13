@@ -11,7 +11,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 @app.route("/", methods=['POST', 'OPTIONS'])
-@cross_origin()
+@cross_origin(headers=['Content-Type'])
 def hello_world():
     jsonResponse = json.loads(request.data.decode('utf-8'))
 
