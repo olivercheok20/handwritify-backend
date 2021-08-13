@@ -1,5 +1,5 @@
 from flask import Flask, request, after_this_request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import unidecode
 import json
 
@@ -7,14 +7,16 @@ from demo import Hand
 
 app = Flask(__name__)
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 @app.route("/", methods=['POST'])
+@cross_origin()
 def hello_world():
-    @after_this_request
-    def add_header(response):
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response
+    # @after_this_request
+    # def add_header(response):
+    #     response.headers.add('Access-Control-Allow-Origin', '*')
+    #     return response
 
     jsonResponse = json.loads(request.data.decode('utf-8'))
 
