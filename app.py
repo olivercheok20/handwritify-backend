@@ -1,15 +1,15 @@
-from flask import Flask, request
-from flask_cors import CORS, cross_origin
+from flask import Flask, request, jsonify
+from flask_cors import cross_origin
 import unidecode
 import json
 
 from demo import Hand
 
 app = Flask(__name__)
-cors = CORS(app)
+
 
 @app.route("/", methods=['POST', 'OPTIONS'])
-@cross_origin(headers=['Content-Type'])
+@cross_origin()
 def hello_world():
     jsonResponse = json.loads(request.data.decode('utf-8'))
 
@@ -60,6 +60,22 @@ def hello_world():
         stroke_widths=stroke_widths,
         bg_color=jsonResponse["bg_color"]
     )
+
+    # response = jsonify(
+    #     {
+    #         "svg": hand.write(
+    #             filename=filename,
+    #             lines=lines,
+    #             biases=biases,
+    #             styles=styles,
+    #             stroke_colors=stroke_colors,
+    #             stroke_widths=stroke_widths,
+    #             bg_color=jsonResponse["bg_color"]
+    #         )
+    # })
+
+    # response.headers.add('Access-Control-Allow-Origin', '*')
+    # return response
 
 if __name__ == "__main__":
     app.run()
