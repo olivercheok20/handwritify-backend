@@ -36,6 +36,8 @@ def hello_world():
     lines = processed_lines
     # print(all_chars)
 
+    lines = lines[:1]
+
     for line in lines:
         for char in line:
             if char not in "\u0000 !\"#'(),-.0123456789:;?ABCDEFGHIJKLMNOPRSTUVWYabcdefghijklmnopqrstuvwxyz":
@@ -49,7 +51,7 @@ def hello_world():
 
     filename = 'dummy.svg'
 
-    return open(filename).read()
+    # return open(filename).read()
 
     hand = Hand()
 
