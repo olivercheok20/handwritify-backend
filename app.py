@@ -13,10 +13,10 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route("/", methods=['POST'])
 @cross_origin()
 def hello_world():
-    # @after_this_request
-    # def add_header(response):
-    #     response.headers.add('Access-Control-Allow-Origin', '*')
-    #     return response
+    @after_this_request
+    def add_header(response):
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
 
     jsonResponse = json.loads(request.data.decode('utf-8'))
 
