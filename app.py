@@ -49,6 +49,8 @@ def hello_world():
 
     filename = 'dummy.svg'
 
+    return open(filename).read()
+
     hand = Hand()
 
     return hand.write(
