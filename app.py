@@ -6,11 +6,10 @@ import json
 from demo import Hand
 
 app = Flask(__name__)
-app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app, resources=r"/*", headers='Content-Type')
 
 
 @app.route("/", methods=['POST', 'OPTIONS'])
-@cross_origin()
 def hello_world():
     jsonResponse = json.loads(request.data.decode('utf-8'))
 
